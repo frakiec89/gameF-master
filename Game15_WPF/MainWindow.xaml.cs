@@ -23,19 +23,34 @@ namespace Game15_WPF
     {
 
         Game game;
-        const int size = 4;
+        const int size = 8;
 
         public MainWindow()
         {
             InitializeComponent();
             game = new Game(size);
             btStart.Click += BtStart_Click;
+            gridStart(size);
             HideButton();
+        }
+
+        private void gridStart(int size)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                grGane.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                grGane.RowDefinitions.Add(new RowDefinition());
+            }
+
         }
 
         private void BtStart_Click(object sender, RoutedEventArgs e)
         {
-            //   game.Start(10 + DateTime.Now.Millisecond);
+             game.Start(10 + DateTime.Now.Millisecond);
             game.Start(1);
             ShowButton();
         }
